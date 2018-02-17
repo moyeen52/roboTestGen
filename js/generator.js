@@ -1,5 +1,5 @@
 
-var robotWords='';
+var robotWords={};
 var clickElement=function(selector){
   return "Click Element         css="+selector.toString();
 };
@@ -42,10 +42,11 @@ jQuery(document).ready(function() {
     // let's try with input elements
     jQuery('body').on('change','input',function(e){
       var targetAttr=e.currentTarget.attributes;
+      var selector=getSelector(e.target);
       if(targetAttr.type.value==="text"){
-         robotWords=robotWords+inputText(getSelector(e.target),targetAttr.value.value);
+         robotWords[selector]=inputText(selector,targetAttr.value.value);
 
       }
-      
+      console.log(robotWords);
     });
 });
